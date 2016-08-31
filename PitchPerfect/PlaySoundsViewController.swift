@@ -43,6 +43,7 @@ class PlaySoundsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 	
+	// Change UIButton imageView scaling modes to prevent image stretch/squish on landscape
 	func setupButtons() {
 		snailButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
 		chipmunkButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit

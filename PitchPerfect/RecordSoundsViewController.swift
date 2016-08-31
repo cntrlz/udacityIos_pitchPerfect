@@ -25,7 +25,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 	
 	override func viewWillAppear(animated: Bool) {
 		print("View Will Appear")
-		
 	}
 
 	override func didReceiveMemoryWarning() {
