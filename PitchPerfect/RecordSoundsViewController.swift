@@ -22,19 +22,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 		stopButton.enabled = false
 		
 	}
-	
-	override func viewWillAppear(animated: Bool) {
-		print("View Will Appear")
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-	
 
 	@IBAction func recordAudio(sender: AnyObject) {
-		print("Recording started...")
 		recordingLabel.text = "Recording in Progress..."
 		recordButton.enabled = false
 		stopButton.enabled = true
@@ -56,10 +45,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 	}
 
 	@IBAction func stopRecording(sender: AnyObject) {
-		print("Recording stopped.")
+		recordingLabel.text = "Tap to Record"
 		recordButton.enabled = true
 		stopButton.enabled = false
-		recordingLabel.text = "Tap to Record"
 		
 		audioRecorder.stop()
 		let audioSession = AVAudioSession.sharedInstance()
@@ -67,11 +55,12 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 	}
 	
 	func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-		print("AVAudio has finished saving the recording")
-		if (flag){
-			self.performSegueWithIdentifier("stopRecording", sender: audioRecorder.url)
+		if !flag {
+			performSegueWithIdentifier("stopRecording", sender: audioRecorder.url)
 		} else {
-			print("AVAudio failed to save the recording!")
+			let alert = UIAlertController(title: title, message: "AVAudio failed to save the recording!", preferredStyle: .Alert)
+			alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+			self.presentViewController(alert, animated: true, completion: nil)
 		}
 	}
 	

@@ -172,6 +172,12 @@
                         <outlet property="snailButton" destination="IDP-2Z-Xv5" id="ecr-5c-z4o"/>
                         <outlet property="stopButton" destination="bNb-di-ZKY" id="2rD-3T-zQ0"/>
                         <outlet property="vaderButton" destination="lxQ-th-iol" id="zxg-KF-1mA"/>
+                        <outletCollection property="playButtons" destination="IDP-2Z-Xv5" collectionClass="NSMutableArray" id="jDr-JL-y1r"/>
+                        <outletCollection property="playButtons" destination="TIG-eA-noX" collectionClass="NSMutableArray" id="Wy5-YF-RI6"/>
+                        <outletCollection property="playButtons" destination="Gh0-QO-3cg" collectionClass="NSMutableArray" id="Ata-Du-WZ8"/>
+                        <outletCollection property="playButtons" destination="lxQ-th-iol" collectionClass="NSMutableArray" id="h7X-68-0H0"/>
+                        <outletCollection property="playButtons" destination="Jjf-9X-tHe" collectionClass="NSMutableArray" id="2Ud-Z0-nWQ"/>
+                        <outletCollection property="playButtons" destination="Iru-6n-j0O" collectionClass="NSMutableArray" id="gVh-xt-N5r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmW-BH-Ioa" userLabel="First Responder" sceneMemberID="firstResponder"/>

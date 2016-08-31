@@ -18,6 +18,7 @@ class PlaySoundsViewController: UIViewController {
 	@IBOutlet weak var echoButton: UIButton!
 	@IBOutlet weak var reverbButton: UIButton!
 	@IBOutlet weak var stopButton: UIButton!
+	@IBOutlet var playButtons : [UIButton]!
 	
 	var recordedAudioURL: NSURL!
 	var audioFile : AVAudioFile!
@@ -25,11 +26,12 @@ class PlaySoundsViewController: UIViewController {
 	var audioPlayerNode : AVAudioPlayerNode!
 	var stopTimer : NSTimer!
 	
-	enum ButtonType: Int { case Slow = 0, Fast, Chipmunk, Vader, Echo, Reverb }
+	enum ButtonType: Int {
+		case Slow = 0, Fast, Chipmunk, Vader, Echo, Reverb
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupAudio()
 		setupButtons()
     }
@@ -37,25 +39,15 @@ class PlaySoundsViewController: UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		configureUI(.NotPlaying)
 	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 	
 	// Change UIButton imageView scaling modes to prevent image stretch/squish on landscape
 	func setupButtons() {
-		snailButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-		chipmunkButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-		rabbitButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-		vaderButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-		echoButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-		reverbButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+		for button in playButtons {
+			button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+		}
 	}
 	
 	@IBAction func playSoundForButton(sender: UIButton){
-		print("Play sound button pressed!")
-		
 		switch(ButtonType(rawValue: sender.tag)!){
 			case .Slow:
 				playSound(rate: 0.5)
@@ -75,7 +67,6 @@ class PlaySoundsViewController: UIViewController {
 	}
 	
 	@IBAction func stopButtonPressed(sender: AnyObject){
-		print("Stop button pressed!")
 		stopAudio()
 	}
 }
